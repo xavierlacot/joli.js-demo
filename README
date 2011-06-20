@@ -1,18 +1,5 @@
-Welcome to your Appcelerator Titanium Mobile Project
+# joli.js demo project
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
+[joli.js](https://github.com/xavierlacot/joli.js) is a javascript ORM for the mobile applications framework [Appcelerator Titanium](http://www.appcelerator.com/).
 
-
-
-----------------------------------
-Stuff our legal folk make us say:
-
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
-
-Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc. All Rights Reserved.
-
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
-
+This repository contains a simple example which demonstrates how to use joli.js. This ready-to-use project has been tested with Titanium 1.6.2.
