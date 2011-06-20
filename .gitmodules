@@ -1,0 +1,3 @@
+[submodule "Resources/lib/vendor/joli.js"]
+	path = Resources/lib/vendor/joli.js
+	url = git://github.com/xavierlacot/joli.js.git
