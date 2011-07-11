@@ -37,6 +37,16 @@ var models = (function() {
         } else {
           this.set('city_id', city.id);
         }
+      },
+      getCityName: function() {
+        // search for the city id
+        var city = joli.models.get('city').findOneById(this.city_id);
+
+        if (!city) {
+          throw 'Could not find a city for this person!';
+        } else {
+          return city.name;
+        }
       }
     }
   });

@@ -21,14 +21,19 @@ win.open();
 
 joli.models.initialize();
 
-// create a "City" record and persist it
+// create some "City" records and persist them
 var newYork = models.city.newRecord({
   name:        'New York',
   description: 'A big Apple'
 });
 newYork.save();
+var paris = models.city.newRecord({
+  name:        'Paris',
+  description: 'Cheese and Baguette'
+});
+paris.save();
 
-label.text = 'New York saved in database';
+label.text = 'New York and Paris saved in database';
 
 // create a "human" record (not persisted)
 var john = models.human.newRecord({
@@ -57,3 +62,11 @@ label.text = label.text + '\nSarah created and saved in database';
 // count the number of New York habitants
 var count = models.human.countIn('New York');
 label.text = label.text + '\nThere are ' + count + ' inhabitants in New York';
+
+var john = models.human.findOneById(1);
+john.move('Paris');
+label.text = label.text + '\nJohn moved to Paris';
+john.save();
+
+var john = models.human.findOneById(1);
+label.text = label.text + '\nJohn now lives in: ' + john.getCityName();
