@@ -7,7 +7,8 @@ This repository contains a simple example which demonstrates how to use joli.js.
 
 ## How to start the project
 
-* download the source code,
-* go to the project root and type:
+First, download the source code. Take care that joli.js itself is a submodule of this repository, so you may have to get it separately.
+
+Go to the project root and type the command:
 
     $ make

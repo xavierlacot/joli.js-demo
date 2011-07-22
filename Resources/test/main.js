@@ -1,5 +1,5 @@
 var joliTest = function() {
-	var john, sarah, newYork, paris;
+  var john, sarah, newYork, paris;
 };
 
 joliTest.prototype = {
@@ -7,9 +7,9 @@ joliTest.prototype = {
    * clear model tables
    */
   clearTables: function() {
-	  models.city.truncate();
-	  models.country.truncate();
-	  models.human.truncate();
+    models.city.truncate();
+    models.country.truncate();
+    models.human.truncate();
   },
 
   /**
