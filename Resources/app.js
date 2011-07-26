@@ -1,4 +1,4 @@
-(function(){
+(function() {
   // load joli library and models definition file
   Ti.include('/lib/vendor/joli.js/joli.js');
   Ti.include('/lib/model/models.js');

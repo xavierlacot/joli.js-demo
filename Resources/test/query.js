@@ -109,6 +109,18 @@
       q = new joli.query().select().from('view_count').where('nb_views > ?', 1000);
       expect(q.getQuery()).toBe('select * from view_count where nb_views > "1000"');
 
+      // array-based single replacement
+      q = new joli.query().select().from('view_count').where('nb_views > ?', [1000]);
+      expect(q.getQuery()).toBe('select * from view_count where nb_views > "1000"');
+
+      // multiple value replacements, for instance for between statements
+      q = new joli.query().select().from('view_count').where('nb_views between ? and ?', [1000, 2000]);
+      expect(q.getQuery()).toBe('select * from view_count where nb_views between "1000" and "2000"');
+
+      // check that replacements stop even if there are less arguments than expected
+      q = new joli.query().select().from('view_count').where('nb_views between ? and ?', [1000]);
+      expect(q.getQuery()).toBe('select * from view_count where nb_views between "1000" and ?');
+
       // check with several chained calls
       q = new joli.query().select().from('human').where('last_name = ?', 'Doe').where('first_name = ?', 'John');
       expect(q.getQuery()).toBe('select * from human where last_name = "Doe" and first_name = "John"');
