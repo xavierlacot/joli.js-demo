@@ -13,6 +13,14 @@
       setUp();
       test.insertCities();
       expect(models.city.count()).toBe(2);
+
+      // on object saved for the first time gets his primary key immediately available
+      var berlin = models.city.newRecord({
+        name:        'Berlin',
+        description: 'A nice place to live'
+      })
+      berlin.save();
+      expect(berlin.get('id')).toBeGreaterThan(0);
     });
 
     it('joli.record.get()', function() {
