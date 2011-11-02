@@ -121,6 +121,14 @@
       q = new joli.query().select().from('view_count').where('nb_views between ? and ?', [1000]);
       expect(q.getQuery()).toBe('select * from view_count where nb_views between "1000" and ?');
 
+      // check that replacements work with 0 values
+      q = new joli.query().select().from('view_count').where('nb_views between ? and ?', [1000, 0]);
+      expect(q.getQuery()).toBe('select * from view_count where nb_views between "1000" and "0"');
+
+      // check that replacements work for values after 0
+      q = new joli.query().select().from('view_count').where('nb_views between ? and ? and ?', [1000, 0, 2000]);
+      expect(q.getQuery()).toBe('select * from view_count where nb_views between "1000" and "0" and "2000"');
+
       // check with several chained calls
       q = new joli.query().select().from('human').where('last_name = ?', 'Doe').where('first_name = ?', 'John');
       expect(q.getQuery()).toBe('select * from human where last_name = "Doe" and first_name = "John"');
