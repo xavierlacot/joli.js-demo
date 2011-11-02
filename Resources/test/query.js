@@ -53,6 +53,40 @@
       expect(q.getQuery()).toBe('select * from human left outer join city on city.id = human.city_id');
     });
 
+    it('joli.query.as()', function() {       
+      // test without using as()
+      q = new joli.query().select()
+        .from('human')
+        .join('city', 'id', 'human.city_id');
+      
+      // query validation
+      expect(q.getQuery()).toBe('select * from human left outer join city on city.id = human.city_id');
+      
+      // recs should be for humans
+      recs = q.execute();
+      expect(recs.length).toBe(1);
+      human = recs[0];
+      expect(human.first_name).toBe('Sarah');
+      expect(human.last_name).toBe('Sure');
+      expect(human.city_id).toBe(models.city.findOneBy('name', 'New York').get('id'));
+      
+      // test a projection of the same query using as('city')
+      q = new joli.query().select('city.*')
+        .from('human')
+        .join('city', 'id', 'human.city_id')
+        .as('city');
+      
+      // query validation
+      expect(q.getQuery()).toBe('select city.* from human left outer join city on city.id = human.city_id');
+      
+      // recs should be for cities
+      recs = q.execute();
+      expect(recs.length).toBe(1);
+      city = recs[0];
+      expect(city.name).toBe('New York');
+      expect(city.id).toBe(models.city.findOneBy('name', 'New York').get('id'));
+    });
+
     it('joli.query.limit()', function() {
       q = new joli.query().select().from('human').limit(10);
       expect(q.getQuery()).toBe('select * from human limit 10');
