@@ -1,6 +1,14 @@
+var joli, joli2;
+
 (function() {
-  // load joli library and models definition file
+  // load joli library using Ti.include()
   Ti.include('/lib/vendor/joli.js/joli.js');
+  joli.connection = new joli.Connection('joli-js-demo');
+
+  // load joli library using Ti.include()
+  joli2 = require('lib/vendor/joli.js/joli').connect('joli-js-demo-2');
+  
+  // load the models definition file
   Ti.include('/lib/model/models.js');
 
   // load jasmine library and adapter
@@ -9,6 +17,7 @@
 
   // initialize the model
   joli.models.initialize();
+  joli2.models.initialize();
 
   // load test facility functions
   Ti.include('/test/main.js');

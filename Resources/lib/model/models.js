@@ -1,5 +1,3 @@
-joli.connection = new joli.Connection('joli-js-demo');
-
 var models = (function() {
   var m = {};
 
@@ -62,6 +60,47 @@ var models = (function() {
   });
 
   m.country = new joli.model({
+    table:    'country',
+    columns:  {
+      id:                 'INTEGER PRIMARY KEY AUTOINCREMENT',
+      name:               'TEXT'
+    }
+  });
+
+  return m;
+})();
+
+
+
+/**
+ * These tables are created in the joli2 database.
+ * We do not name this bag of models, so the only way to access them will be
+ * joli2.models.get()
+ */
+(function() {
+  var m = {};
+
+  m.human = new joli2.model({
+    table:    'human',
+    columns:  {
+      id:                 'INTEGER PRIMARY KEY AUTOINCREMENT',
+      city_id:            'INTEGER',
+      first_name:         'TEXT',
+      last_name:          'TEXT'
+    }
+  });
+
+  m.city = new joli2.model({
+    table:    'city',
+    columns:  {
+      id:                 'INTEGER PRIMARY KEY AUTOINCREMENT',
+      country_id:         'INTEGER',
+      name:               'TEXT',
+      description:        'TEXT'
+    }
+  });
+
+  m.country = new joli2.model({
     table:    'country',
     columns:  {
       id:                 'INTEGER PRIMARY KEY AUTOINCREMENT',

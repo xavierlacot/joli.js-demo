@@ -10,6 +10,11 @@ joliTest.prototype = {
     models.city.truncate();
     models.country.truncate();
     models.human.truncate();
+    
+    // also clear the second database
+    joli2.models.get('city').truncate();
+    joli2.models.get('country').truncate();
+    joli2.models.get('human').truncate();
   },
 
   /**
@@ -31,6 +36,25 @@ joliTest.prototype = {
     });
     this.sarah.move('New York');
     this.sarah.save();
+  },
+
+  /**
+   * Insert some human records in the joli2 database
+   */
+  createHumansInJoli2: function() {
+    // create a "human" record (persisted)
+    this.john2 = joli2.models.get('human').newRecord({
+      first_name: 'John',
+      last_name: 'Doe'
+    });
+    this.john2.save();
+
+    // create an other "human" record (persisted)
+    this.sarah2 = joli2.models.get('human').newRecord({
+      first_name: 'Sarah',
+      last_name: 'Sure'
+    });
+    this.sarah2.save();
   },
 
   /**

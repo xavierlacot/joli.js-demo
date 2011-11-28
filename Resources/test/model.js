@@ -32,7 +32,12 @@
 
     it('joli.model.count()', function() {
       test.createHumans();
+      test.createHumansInJoli2();
       expect(models.human.count()).toBe(1);
+      
+      // the same test, but accessing the model through joli.models.get()
+      expect(joli.models.get('human').count()).toBe(1);
+      expect(joli2.models.get('human').count()).toBe(2);
     });
 
     it('joli.model.deleteRecords()', function() {
