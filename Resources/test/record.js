@@ -65,5 +65,17 @@
       test.john.set('last_name', 'Smith');
       expect(test.john.get('last_name')).toBe('Smith');
     });
+
+    it('joli.record.toArray()', function() {
+      var johnArray = test.john.toArray();
+      expect(johnArray.last_name).toBe('Smith');
+      expect(johnArray.save).toBeUndefined();
+
+      var count = 0;
+      joli.each(johnArray, function(value, key) {
+        count++;
+      });
+      expect(count).toEqual(4);
+    });
   });
 })();
