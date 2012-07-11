@@ -32,6 +32,9 @@
     });
 
     it('joli.query.having()', function() {
+      q = new joli.query().select('count(human.id) as nb_humans').from('human').where('first_name = ?', 'michel').groupBy('city_id').having('nb_humans > ?', 1);
+      expect(q.getQuery()).toBe('select count(human.id) as nb_humans from human where first_name="michel" group by city_id having nb_humans > "1"');
+
       q = new joli.query().select('count(human.id) as nb_humans').from('human').groupBy('city_id').having('nb_humans > ?', 1);
       expect(q.getQuery()).toBe('select count(human.id) as nb_humans from human group by city_id having nb_humans > "1"');
     });
