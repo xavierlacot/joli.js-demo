@@ -31,6 +31,11 @@
       expect(q.getQuery()).toBe('select city_id, count(*) as total from human group by city_id, first_name');
     });
 
+    it('joli.query.having()', function() {
+      q = new joli.query().select('count(human.id) as nb_humans').from('human').groupBy('city_id').having('nb_humans > ?', 1);
+      expect(q.getQuery()).toBe('select count(human.id) as nb_humans from human group by city_id having nb_humans > "1"');
+    });
+
     it('joli.query.insertInto()', function() {
       q = new joli.query().insertInto('human').values({
         first_name: 'John',
