@@ -33,10 +33,31 @@
       expect(test.sarah.isChanged()).toBeFalsy();
       expect(test.john.isChanged()).toBeFalsy();
 
+      // change a record and test its isChanged() method again
       test.sarah.set('last_name', 'Married');
       expect(test.sarah.isChanged()).toBeTruthy();
       test.sarah.save();
       expect(test.sarah.isChanged()).toBeFalsy();
+
+      // grab a record from the database and check its isChanged() method
+      var sarah = models.human.findOneBy('first_name', 'Sarah');
+      expect(sarah.isChanged()).toBeFalsy();
+
+      sarah.fromArray({
+        id: sarah.get('id'),
+        city_id: sarah.get('city_id'),
+        first_name: 'Sarah',
+        last_name: 'Michel'
+      });
+      expect(sarah.isChanged()).toBeTruthy();
+
+      sarah.fromArray({
+        id: sarah.get('id'),
+        city_id: sarah.get('city_id'),
+        first_name: 'Sarah',
+        last_name: 'Married'
+      });
+      expect(sarah.isChanged()).toBeFalsy();
     });
 
     it('joli.record custom methods', function() {
