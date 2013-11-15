@@ -1,4 +1,3 @@
 .project
-build/android/*
-build/iphone/*
+build/*
 tmp
