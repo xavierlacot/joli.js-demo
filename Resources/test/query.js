@@ -47,6 +47,14 @@
       expect(q.getQuery()).toBe('insert into human (first_name, last_name) values (\'John\', \'Doe\')');
     });
 
+    it('joli.query.insertReplace()', function() {
+      q = new joli.query().insertReplace('human').values({
+        first_name: 'John',
+        last_name: 'Doe'
+      });
+      expect(q.getQuery()).toBe('insert or replace into human (first_name, last_name) values (\'John\', \'Doe\')');
+    });
+
     it('joli.query.join()', function() {
       // check behavior with simple local id
       q = new joli.query().select()
