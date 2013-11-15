@@ -1,8 +1,8 @@
-#appname: joliDemo
-#publisher: xavier
-#url: http://lacot.org/
-#image: appicon.png
-#appid: com.jolijs.demo
-#desc: undefined
-#type: mobile
-#guid: 53f55927-68cb-4e07-b056-83d5c7d04800
+#appname:joliDemo
+#publisher:xavier
+#url:http://lacot.org/
+#image:appicon.png
+#appid:com.jolijs.demo
+#desc:No description provided
+#type:ipad
+#guid:53f55927-68cb-4e07-b056-83d5c7d04800
